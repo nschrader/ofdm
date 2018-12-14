@@ -1,4 +1,4 @@
-function data = decompileChannels(baseband, totalChannels, dataChannels, driverChannels)
+function [d, c] = decompileChannels(baseband, totalChannels, dataChannels, driverChannels)
  % Row vector for using vector concentration
  baseband = baseband';
  
@@ -28,9 +28,13 @@ function data = decompileChannels(baseband, totalChannels, dataChannels, driverC
         driver([usedChannels-i+1 usedChannels-i]) = driver([usedChannels-i usedChannels-i+1]);
      end
  end
- d = czeros(dataChannels);
- d(1:dataChannels) = driver(fDriverChannels_2+1:fDriverChannels_2+dataChannels);
+ data = czeros(dataChannels);
+ data(1:dataChannels) = driver(fDriverChannels_2+1:fDriverChannels_2+dataChannels);
+ drvs = czeros(driverChannels);
+ drvs(1:fDriverChannels_2) = driver(1:fDriverChannels_2);
+ drvs(fDriverChannels_2+1:driverChannels) = driver(usedChannels-fDriverChannels_2+1:usedChannels);
  
  % Column vector for simulink
- data = d';
+ d = data';
+ c = drvs';
 end
