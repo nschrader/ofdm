@@ -6,9 +6,9 @@ set title "Throughput vs. Channels for QPSK and infinite SNR"
 set xlabel "Channels"
 set logscale x
 set key top left
-unset y2label
+set y2label "O(.)"
 unset y2tics
-set ylabel "MBaud/s"
+set ylabel "Throughput (MBaud/s)"
 f(x)=(2**floor(log(x)/log(2)))
 plot "result.txt" u 1:($3/2) w lines axes x1y1 t "Throughput", \
     [1:60000] f(x)*log(f(x)) w lines axes x1y2 t "FFT complexity"
@@ -16,6 +16,7 @@ plot "result.txt" u 1:($3/2) w lines axes x1y1 t "Throughput", \
 set output "pilots.png"
 set title "Necessary Pilot Channels vs. Channels for QPSK and infinite SNR"
 set ylabel "Pilot Channels"
+unset y2label
 set parametric
 set trange [0:45]
 plot "result.txt" u 1:2 w lines notitle, \

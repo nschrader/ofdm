@@ -2,12 +2,12 @@ set terminal png
 set datafile separator ","
 
 set output "snr.png"
-set title "Throughput vs. SNR"
-set xlabel "dB"
+set title "Modulation Performances vs. SNR (4096 Channels with 64 Pilots)"
+set xlabel "SNR (dB)"
 set xrange [30:10]
 set ylabel "MBit/s"
 set yrange [0:200]
-set y2label "%"
+set y2label "BER (%)"
 set y2tics nomirror
 set ytics nomirror
 set key bottom left
