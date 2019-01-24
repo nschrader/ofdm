@@ -21,4 +21,4 @@ set parametric
 set trange [0:45]
 plot "result.txt" u 1:2 w lines notitle, \
     50000, t notitle lc black, \
-    2, t notitle lc black
+    20, t notitle lc black
